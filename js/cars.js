@@ -91,6 +91,8 @@ class Car{
             y:this.y-Math.sin(Math.Pi + this.angle+alpha)*rad
         });
 
+        return points;
+
     }
 
     draw(ctx){
@@ -99,6 +101,7 @@ class Car{
         for(let i=1;i<this.polygon.length;i++){
             ctx.lineTo(this.polygon[i].x, this.polygon[i].y);
         }
+        ctx.fillStyle="black";
         ctx.fill();
         this.sensor.draw(ctx);
     }
