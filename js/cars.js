@@ -10,15 +10,17 @@ class Car{
         this.maxSpeed=3;
         this.friction=0.05;
         this.angle=0;
-        this.angleSpeed=0.02;
+        this.angleSpeed=0.03;
 
-        this.controls=new Controls();
+        this.sensor= new Sensor(this);
+        this.controls= new Controls();
     }
 
-    update(){
+    update(roadBorders){
         this.#controlsSpeedVertical();
         this.#controlsSpeedHorizontal();
         this.#move();
+        this.sensor.update(roadBorders);
     }
 
     #controlsSpeedHorizontal(){
@@ -78,5 +80,6 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+        this.sensor.draw(ctx);
     }
 }
