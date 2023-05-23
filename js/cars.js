@@ -18,11 +18,13 @@ class Car{
     }
 
     update(roadBorders){
+        if(!this.damage){
         this.#controlsSpeedVertical();
         this.#controlsSpeedHorizontal();
         this.#move();
         this.polygon=this.#createPolygon();
         this.damage = this.#assessDamage(roadBorders);
+        }
         this.sensor.update(roadBorders);
     }
 
@@ -104,7 +106,7 @@ class Car{
     }
 
     draw(ctx){
-        if(this.damaged){
+        if(this.damage){
             ctx.fillStyle="gray";
         }else{
             ctx.fillStyle="black";
