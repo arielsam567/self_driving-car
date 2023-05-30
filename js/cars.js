@@ -11,6 +11,7 @@ class Car {
     this.friction = 0.05;
     this.angle = 0;
     this.damaged = false;
+    console.log(controlType);
 
     this.useBrain = controlType == "AI";
 
@@ -33,7 +34,7 @@ class Car {
         s == null ? 0 : 1 - s.offset
       );
       const outputs = NeuralNetwork.feedForward(offsets, this.brain);
-      console.log(outputs);
+
       if (this.useBrain) {
         this.controls.forward = outputs[0];
         this.controls.left = outputs[1];
